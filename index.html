@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css.css">
+  <script src="js.js" defer></script>
+</head>
+<style>
+  *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+</style>
+<body>
+  <div id="board">
+    <svg viewBox="0 0 100 100" class="coordinates">
+      <text x="0.75" y="3.5" font-size="2.8">1</text>
+      <text x="0.75" y="15.75" font-size="2.8">2</text>
+      <text x="0.75" y="28.25" font-size="2.8">3</text>
+      <text x="0.75" y="40.75" font-size="2.8">4</text>
+      <text x="0.75" y="53.25" font-size="2.8">5</text>
+      <text x="0.75" y="65.75" font-size="2.8">6</text>
+      <text x="0.75" y="78.25" font-size="2.8">7</text>
+      <text x="0.75" y="90.75" font-size="2.8">8</text>
+      <text x="10" y="99" font-size="2.8">h</text>
+      <text x="22.5" y="99" font-size="2.8">g</text>
+      <text x="35" y="99" font-size="2.8">f</text>
+      <text x="47.5" y="99" font-size="2.8">e</text>
+      <text x="60" y="99" font-size="2.8">d</text>
+      <text x="72.5" y="99" font-size="2.8">c</text>
+      <text x="85" y="99" font-size="2.8">b</text>
+      <text x="97.5" y="99" font-size="2.8">a</text>
+    </svg>
+    <div id="pieces">
+      <div class="piece wr square-81"></div><div class="piece br square-11"></div>
+      <div class="piece wn square-82"></div><div class="piece bn square-12"></div>
+      <div class="piece wb square-83"></div><div class="piece bb square-13"></div>
+      <div class="piece wq square-84"></div><div class="piece bq square-14"></div>
+      <div class="piece wk square-85"></div><div class="piece bk square-15"></div>
+      <div class="piece wb square-86"></div><div class="piece bb square-16"></div>
+      <div class="piece wn square-87"></div><div class="piece bn square-17"></div>
+      <div class="piece wr square-88"></div><div class="piece br square-18"></div>
+      <div class="piece wp square-71"></div><div class="piece bp square-21"></div>
+      <div class="piece wp square-72"></div><div class="piece bp square-22"></div>
+      <div class="piece wp square-73"></div><div class="piece bp square-23"></div>
+      <div class="piece wp square-74"></div><div class="piece bp square-24"></div>
+      <div class="piece wp square-75"></div><div class="piece bp square-25"></div>
+      <div class="piece wp square-76"></div><div class="piece bp square-26"></div>
+      <div class="piece wp square-77"></div><div class="piece bp square-27"></div>
+      <div class="piece wp square-78"></div><div class="piece bp square-28"></div>
+    </div>
+  </div> 
+  <div id="side-panel">
+    <button class="hbuttons" onclick="prevHistory(true)"> |<</button>
+    <button class="hbuttons" onclick="prevHistory()"><</button>
+    <button class="hbuttons" onclick="playHistory(this)" id="playHistory">PLAY</button>
+    <button class="hbuttons" onclick="nextHistory()">></button>
+    <button class="hbuttons" onclick="nextHistory(true)">>|</button>
+    <div id="history-info"></div>
+  </div>
+  <div id="project-details">
+    <details>
+      <summary class="margin-30">Detalji vezani za ovaj mini-projekat:</summary>
+        <pre>
+
+  Primenjeno/korisceno:
+  1. Osnovna programerska logika resavanja zadataka
+  2. Relativno efikasan, razumljiv, komentarisan JS kod
+  2.1. Javascript: funkcije, nizovi, dogadjaji, DOM manipulacije... 
+  3. Osnove CSS-a
+  4. Izgled figura, table i audio fajlovi preuzeti sa chess.com sajta
+
+  Implementirane opcije:
+  1. Primoravanje zastite kralja kada se nalazi pod sahom
+  2. Sprecavanje pomeranja figura koje bi izazvale sopstveni sah
+  3. En passant
+  4. Promocija pijuna (kraljica,top,lovac,konj)
+  5. Rokada
+  6. Audio
+  7. Istorija poteza tokom partije, napred/nazad 
+  8. Mini bot za automatsko odigravanje poteza 
+  9. Cestitka na kraju partije 
+      </pre>
+    </details>
+  </div>
+  <div id="audio">
+    <audio id="audio-move" preload="auto">
+      <source src="resource-files/audio/move-self/move-self.webm" type="audio/webm">
+      <source src="resource-files/audio/move-self/move-self.ogg" type="audio/ogg">
+      <source src="resource-files/audio/move-self/move-self.mp3" type="audio/mpeg">
+      <source src="resource-files/audio/move-self/move-self.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-capture" preload="auto">
+      <source src="resource-files/audio/capture/capture.webm" type="audio/webm">
+      <source src="resource-files/audio/capture/capture.ogg" type="audio/ogg">
+      <source src="resource-files/audio/capture/capture.mp3" type="audio/mpeg">
+      <source src="resource-files/audio/capture/capture.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-promote" preload="auto">
+      <source src="resource-files/audio/promote/promote.webm" type="audio/webm">
+      <source src="resource-files/audio/promote/promote.ogg" type="audio/ogg">
+      <source src="resource-files/audio/promote/promote.mp3" type="audio/mpeg">
+      <source src="resource-files/audio/promote/promote.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-check" preload="auto">
+      <source src="resource-files/audio/move-check/move-check.webm" type="audio/webm">
+      <source src="resource-files/audio/move-check/move-check.ogg" type="audio/ogg">
+      <source src="resource-files/audio/move-check/move-check.mp3" type="audio/mpeg">
+      <source src="resource-files/audio/move-check/move-check.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-new-game" preload="auto">
+      <source src="resource-files/audio/game-starts/game-start.webm" type="audio/webm">
+      <source src="resource-files/audio/game-starts/game-start.ogg" type="audio/ogg">
+      <source src="resource-files/audio/game-starts/game-start.mp3" type="audio/mpeg">
+      <source src="resource-files/audio/game-starts/game-start.wav" type="audio/wav">
+    </audio>
+    <audio id="audio-castle" preload="auto">
+      <source src="resource-files/audio/castle/castle.webm" type="audio/webm">
+      <source src="resource-files/audio/castle/castle.ogg" type="audio/ogg">
+      <source src="resource-files/audio/castle/castle.mp3" type="audio/mpeg">
+      <source src="resource-files/audio/castle/castle.wav" type="audio/wav">
+    </audio>
+  </div>
+</body>
+</html>
