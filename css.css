@@ -1,0 +1,222 @@
+*{
+    user-select: none;
+}
+body{
+    background-color: rgb(49, 46, 43);
+    font-family: Consolas;
+}
+#board{
+    width: 800px;
+    height: 800px;
+    background-image: url("resource-files/board.png");
+    background-size: 800px 800px;
+    background-repeat: no-repeat;  
+    margin: auto;
+    margin-top: 50px;
+    position: relative;
+    border: 1px solid black;
+  }
+.piece{
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    display: inline-block;
+    z-index: 1000;
+}
+[class^="piece w"]{
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+.grabbable {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+.br{background-image: url("resource-files/figures/br.png");}
+.bn{background-image: url("resource-files/figures/bn.png");}
+.bb{background-image: url("resource-files/figures/bb.png");}
+.bk{background-image: url("resource-files/figures/bk.png");}
+.bq{background-image: url("resource-files/figures/bq.png");}
+.bp{background-image: url("resource-files/figures/bp.png");}
+.wr{background-image: url("resource-files/figures/wr.png");}
+.wn{background-image: url("resource-files/figures/wn.png");}
+.wb{background-image: url("resource-files/figures/wb.png");}
+.wk{background-image: url("resource-files/figures/wk.png");}
+.wq{background-image: url("resource-files/figures/wq.png");}
+.wp{background-image: url("resource-files/figures/wp.png");}
+
+.square-11{top: 0px; left: 0;}
+.square-12{top: 0px; left: 100px;}
+.square-13{top: 0px; left: 200px;}
+.square-14{top: 0px; left: 300px;}
+.square-15{top: 0px; left: 400px;}
+.square-16{top: 0px; left: 500px;}
+.square-17{top: 0px; left: 600px;}
+.square-18{top: 0px; left: 700px;}
+.square-21{top: 100px; left: 0px;}
+.square-22{top: 100px; left: 100px;}
+.square-23{top: 100px; left: 200px;}
+.square-24{top: 100px; left: 300px;}
+.square-25{top: 100px; left: 400px;}
+.square-26{top: 100px; left: 500px;}
+.square-27{top: 100px; left: 600px;}
+.square-28{top: 100px; left: 700px;}
+.square-31{top: 200px; left: 0px;}
+.square-32{top: 200px; left: 100px;}
+.square-33{top: 200px; left: 200px;}
+.square-34{top: 200px; left: 300px;}
+.square-35{top: 200px; left: 400px;}
+.square-36{top: 200px; left: 500px;}
+.square-37{top: 200px; left: 600px;}
+.square-38{top: 200px; left: 700px;}
+.square-41{top: 300px; left: 0px;}
+.square-42{top: 300px; left: 100px;}
+.square-43{top: 300px; left: 200px;}
+.square-44{top: 300px; left: 300px;}
+.square-45{top: 300px; left: 400px;}
+.square-46{top: 300px; left: 500px;}
+.square-47{top: 300px; left: 600px;}
+.square-48{top: 300px; left: 700px;}
+.square-51{top: 400px; left: 0px;}
+.square-52{top: 400px; left: 100px;}
+.square-53{top: 400px; left: 200px;}
+.square-54{top: 400px; left: 300px;}
+.square-55{top: 400px; left: 400px;}
+.square-56{top: 400px; left: 500px;}
+.square-57{top: 400px; left: 600px;}
+.square-58{top: 400px; left: 700px;}
+.square-61{top: 500px; left: 0px;}
+.square-62{top: 500px; left: 100px;}
+.square-63{top: 500px; left: 200px;}
+.square-64{top: 500px; left: 300px;}
+.square-65{top: 500px; left: 400px;}
+.square-66{top: 500px; left: 500px;}
+.square-67{top: 500px; left: 600px;}
+.square-68{top: 500px; left: 700px;}
+.square-71{top: 600px; left: 0px;}
+.square-72{top: 600px; left: 100px;}
+.square-73{top: 600px; left: 200px;}
+.square-74{top: 600px; left: 300px;}
+.square-75{top: 600px; left: 400px;}
+.square-76{top: 600px; left: 500px;}
+.square-77{top: 600px; left: 600px;}
+.square-78{top: 600px; left: 700px;}
+.square-81{top: 700px; left: 0px;}
+.square-82{top: 700px; left: 100px;}
+.square-83{top: 700px; left: 200px;}
+.square-84{top: 700px; left: 300px;}
+.square-85{top: 700px; left: 400px;}
+.square-86{top: 700px; left: 500px;}
+.square-87{top: 700px; left: 600px;}
+.square-88{top: 700px; left: 700px;}
+
+
+.hint{
+    width: 32px;
+    height: 32px;
+    margin-top: -16px;
+    margin-left: -16px;
+    opacity: 0.4;
+    position: absolute;
+    display: inline-block;
+    z-index: 999;
+    border-radius: 32px;
+    background-color: dimgray;
+    transform: translate(50px,50px);
+    -webkit-transform: translate(50px,50px);
+    -moz-transform: translate(50px,50px);
+    -ms-transform: translate(50px,50px);
+    -o-transform: translate(50px,50px);
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    -ms-border-radius: 32px;
+    -o-border-radius: 32px;
+}
+.capture-hint{
+    width: 100px;
+    height: 100px;
+    opacity: 0.4;
+    position: absolute;
+    display: inline-block;
+    z-index: 1000;
+    border: 8px solid dimgray;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+}
+.promote-block{
+    width: 800px;
+    height: 800px;
+    z-index: 7776;
+    position: absolute;
+    display: inline-block;
+    left: 0px;
+    top: 0px;
+}
+.promotion{
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    display: inline-block;
+    z-index: 7777;
+}
+.blur *[class*="piece"]{
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+.endMessage{        
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    z-index: 7776;
+    width: 800px;
+    height: 800px;
+    position: absolute;
+    left: 0px;
+    top: 0px; 
+}
+.endMessage div{
+    width: 400px;
+    text-align: center;
+    display: inline-block;
+    padding: 20px;
+    color: rgb(247, 247, 247);
+    background-color: rgb(255, 71, 71);
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    border: 1px solid black;
+    position: absolute;
+    z-index: 7777;    
+}
+#history-info{
+    color: rgb(255, 71, 71);
+}
+#side-panel{
+    width: 355px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+}
+#project-details{
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+}
+.hbuttons{
+    font-size: large;
+    padding: 2px;
+}
+.margin-30{
+    margin-left: 30px;
+}
